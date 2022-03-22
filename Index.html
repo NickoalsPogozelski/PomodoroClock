@@ -10,11 +10,14 @@
     <h1>Pomodoro</h1>
 
     <div>
-        <button class="button1" onclick="handleSetClock(25)">Pomodoro</button>
-        <button class="button1" onclick="handleSetClock(5)">Short Break</button>
+        <button class="button1" id="pomodoro" onclick="handleSetClock(25)">Pomodoro</button>
+        <button class="button1" onclick="handleSetClock(1)">Short Break</button>
         <button class="button1">Long Break</button>
     </div>
     <div id="new">
         <p id="Timer"></p>
+    </div>
+    <div id="new">
+    <button class = "button1" id="startstop" onclick="handleStartClock()">Start</button>
     </div>
 </body>
