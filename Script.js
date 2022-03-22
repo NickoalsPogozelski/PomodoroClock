@@ -1,9 +1,16 @@
 var Minutos = 25;
 var Segundos = 00;
+
 var breaker = 0;
+var lock = 0;
 
 function handleSetClock(Minutos){
-    document.getElementById("Timer").innerHTML = Minutos + ":" + Segundos;
+    if(Minutos === 25 || Minutos === 15){
+        document.getElementById("Timer").innerHTML = Minutos + ":0" + Segundos;
+    }else{
+        document.getElementById("Timer").innerHTML ="0" + Minutos + ":0" + Segundos;
+    }
+
     this.Minutos = Minutos;
 }
 
@@ -11,12 +18,13 @@ function handleStartClock(){
     if(Minutos + Segundos != 0 && breaker == 0){
         document.body.style.backgroundColor = "rgb(235, 64, 52)";
         breaker = 1;
-
+        lock = 1;
         var x = setInterval(() => {
             
             document.getElementById("startstop").innerHTML = "Stop";
             
             setTimer();
+            handleButtons();
 
             document.getElementById("Title").innerHTML = Minutos + ":" + Segundos + " - Timer Pomodoro";
             
@@ -65,4 +73,26 @@ function onTimerStop(){
     document.body.style.backgroundColor = "rgb(59, 91, 196)";
     document.getElementById("startstop").innerHTML = "Start";
     breaker = 0;
+    lock = 0;
+    handleButtons();
+}
+
+function handleButtons(){
+
+    let pomButton = document.getElementById("pomodoro");
+    let shortButton = document.getElementById("shortbreak");
+    let longButton = document.getElementById("longbreak");
+
+    if(lock === 1){
+        pomButton.disabled = true;
+        shortButton.disabled = true;
+        longButton.disabled = true;
+    }
+    
+    else if(lock === 0){
+        pomButton.disabled = false;
+        shortButton.disabled = false;
+        longButton.disabled = false;
+    }
+
 }
