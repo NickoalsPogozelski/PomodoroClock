@@ -1,5 +1,6 @@
 var Minutos = 0;
 var Segundos = 0;
+var breaker = 0;
 
 function handleSetClock(Minutos){
     document.getElementById("Timer").innerHTML = Minutos + ":" + Segundos;
@@ -7,23 +8,25 @@ function handleSetClock(Minutos){
 }
 
 function handleStartClock(){
-    if(Minutos + Segundos != 0){
-    var x = setInterval(() => {
-        
-        document.getElementById("startstop").innerHTML = "Stop";
+    if(Minutos + Segundos != 0 && breaker == 0){
+        breaker = 1;
 
-        if(Segundos > 0){
-            Segundos -= 1;
-        } else {
-            Minutos -= 1;
-            Segundos = 59;
-        }
+        var x = setInterval(() => {
+            
+            document.getElementById("startstop").innerHTML = "Stop";
 
-        document.getElementById("Timer").innerHTML = Minutos + ":" + Segundos;
+            if(Segundos > 0){
+                Segundos -= 1;
+            } else {
+                Minutos -= 1;
+                Segundos = 59;
+            }
 
-        if(Minutos + Segundos == 0){
-            clearInterval(x);
-        }
+            document.getElementById("Timer").innerHTML = Minutos + ":" + Segundos;
+
+            if(Minutos + Segundos == 0){
+                clearInterval(x);
+            }
 
 }, 1000);
 }}
