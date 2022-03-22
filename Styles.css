@@ -1,5 +1,6 @@
 body{
-    background-color: rgb(105, 144, 184);
+    background-color: rgb(66, 95, 189);
+    transition: background-color 2s;
 }
 
 h1 {
@@ -8,36 +9,42 @@ h1 {
     text-align: center;
 }
 
-div{
-    display: flex;
-    justify-content: center;
-}
-
 .button1{
     appearance: none;
-    background-color: rgb(128, 167, 207);
+    background-color: transparent;
     border: none;
     font-size: 16px;
     color: antiquewhite;
     font-family: 'Roboto', sans-serif;
-    padding: 20px;
-    
+    padding: 10px;
     margin: 2px;
+    border-radius: 25px;
     
 }
 
 .button1:hover{
-    background-color: rgb(74, 109, 145);
-    color: antiquewhite;
     cursor: pointer;
 }
 
 .button1:focus{
-    background-color: rgb(32, 66, 97);
+    background-color: rgb(0,0,0, 0.2);
 }
 
 p{
     color: antiquewhite;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Rubik', sans-serif;
     font-size: 100px;
+}
+
+.box{
+    background-color: rgb(255, 255, 255, 0.1);
+    border-radius: 5%;
+    padding: 10px;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+.in{
+    display: flex;
+    justify-content: center;
 }

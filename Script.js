@@ -9,7 +9,7 @@ function handleSetClock(Minutos){
 
 function handleStartClock(){
     if(Minutos + Segundos != 0 && breaker == 0){
-
+        document.body.style.backgroundColor = "rgb(235, 64, 52)";
         breaker = 1;
 
         var x = setInterval(() => {
@@ -20,7 +20,8 @@ function handleStartClock(){
 
             document.getElementById("Title").innerHTML = Minutos + ":" + Segundos + " - Timer Pomodoro";
             
-            if(Minutos + Segundos == 0){
+            if(Minutos + Segundos === 0){
+                onTimerStop();
                 clearInterval(x);
             }
 
@@ -48,4 +49,20 @@ function setTimer(){
     if(Segundos > 9 && Minutos <= 9){
         document.getElementById("Timer").innerHTML ="0" + Minutos + ":" + Segundos;
     }
+
+    console.log(Minutos + Segundos);
+
+}
+
+function handleStopTimer(){
+    alert("function called");
+    clearInterval(x)
+    breaker = 0;
+    document.body.style.backgroundColor = "rgb(59, 91, 196)";
+}
+
+function onTimerStop(){
+    document.body.style.backgroundColor = "rgb(59, 91, 196)";
+    document.getElementById("startstop").innerHTML = "Start";
+    breaker = 0;
 }

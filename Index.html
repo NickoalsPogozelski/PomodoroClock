@@ -2,25 +2,28 @@
 <head>
     <title id="Title" >Pomodoro Clock</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel = "icon" href ="favicon.png" type = "image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/435cb91bf8.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="Script.js"></script>
 </head>
 <body>
     <h1>Pomodoro</h1>
-
-    <div>
+    <div class="box">
+    <div class="in">
         <button class="button1" id="pomodoro" onclick="handleSetClock(25)">Pomodoro</button>
-        <button class="button1" onclick="handleSetClock(05)">Short Break</button>
+        <button class="button1" onclick="handleSetClock(1)">Short Break</button>
         <button class="button1" onclick="handleSetClock(15)">Long Break</button>
     </div>
 
-    <div id="new">
+    <div id="new" class="in">
         <p id="Timer">25:00</p>
     </div>
 
-    <div id="new">
+    <div id="new" class="in">
     <button class = "button1" id="startstop" onclick="handleStartClock()">Start</button>
     </div>
-
+    </div>
 </body>
