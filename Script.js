@@ -4,30 +4,53 @@ var Segundos = 00;
 var breaker = 0;
 var lock = 0;
 
+let pomodoroCount = 3;
+let breakCount = 3;
+
 function handleSetClock(Minutos){
+
     if(Minutos === 25 || Minutos === 15){
+
         document.getElementById("Timer").innerHTML = Minutos + ":0" + Segundos;
-    }else{
+
+    }else if(Minutos === 5){
+
         document.getElementById("Timer").innerHTML ="0" + Minutos + ":0" + Segundos;
+
     }
 
     this.Minutos = Minutos;
 }
 
 function handleStartClock(){
-    if(Minutos + Segundos != 0 && breaker == 0){
+
+    if(Minutos + Segundos != 0 && breaker === 0){
+
         document.body.style.backgroundColor = "rgb(235, 64, 52)";
+        document.getElementById("startstop").style.color = "rgb(235, 64, 52)";
+
         breaker = 1;
         lock = 1;
+        
+        if(Minutos === 1){
+            pomodoroCount++;
+        }
+
+        if(Minutos === 5 || Minutos === 15){
+            breakCount++;
+        }
+
         var x = setInterval(() => {
             
-            document.getElementById("startstop").innerHTML = "Stop";
-            
+            console.log("pomodoro: " + pomodoroCount);
+            console.log("breaks: " + breakCount);
+
             setTimer();
             handleButtons();
 
             document.getElementById("Title").innerHTML = Minutos + ":" + Segundos + " - Timer Pomodoro";
-            
+
+
             if(Minutos + Segundos === 0){
                 onTimerStop();
                 clearInterval(x);
@@ -62,19 +85,32 @@ function setTimer(){
 
 }
 
-function handleStopTimer(){
-    alert("function called");
-    clearInterval(x)
-    breaker = 0;
-    document.body.style.backgroundColor = "rgb(59, 91, 196)";
-}
-
 function onTimerStop(){
     document.body.style.backgroundColor = "rgb(59, 91, 196)";
-    document.getElementById("startstop").innerHTML = "Start";
+    document.getElementById("startstop").style.color = "rgb(59, 91, 196)";
+
     breaker = 0;
     lock = 0;
+
     handleButtons();
+
+    if(pomodoroCount > breakCount){
+        Minutos = 5;
+        Segundos = 0;
+        document.getElementById("Timer").innerHTML = "0" + Minutos + ":0" + Segundos;
+    } else {
+        Minutos = 1;
+        Segundos = 0;
+        document.getElementById("Timer").innerHTML = Minutos + ":0" + Segundos;
+    }
+
+
+    if(pomodoroCount % 4 === 0 && breakCount % 3 === 0){
+        Minutos = 15;
+        Segundos = 0;
+        document.getElementById("Timer").innerHTML = Minutos + ":0" + Segundos;
+    }
+
 }
 
 function handleButtons(){
