@@ -32,7 +32,7 @@ function handleStartClock(){
         breaker = 1;
         lock = 1;
         
-        if(Minutos === 1){
+        if(Minutos === 25){
             pomodoroCount++;
         }
 
@@ -99,7 +99,7 @@ function onTimerStop(){
         Segundos = 0;
         document.getElementById("Timer").innerHTML = "0" + Minutos + ":0" + Segundos;
     } else {
-        Minutos = 1;
+        Minutos = 25;
         Segundos = 0;
         document.getElementById("Timer").innerHTML = Minutos + ":0" + Segundos;
     }
@@ -118,17 +118,20 @@ function handleButtons(){
     let pomButton = document.getElementById("pomodoro");
     let shortButton = document.getElementById("shortbreak");
     let longButton = document.getElementById("longbreak");
+    let startButton = document.getElementById("startstop");
 
     if(lock === 1){
         pomButton.disabled = true;
         shortButton.disabled = true;
         longButton.disabled = true;
+        startButton.disabled = true;
     }
     
     else if(lock === 0){
         pomButton.disabled = false;
         shortButton.disabled = false;
         longButton.disabled = false;
+        startButton.disabled = false;
     }
 
 }
